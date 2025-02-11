@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/lifecycle/test02")
 public class Ex01RestController {
 	
-	@ResponseBody
 	@RequestMapping("/1")
 	public List<Map<String, Object>> listMapResponse() {
 		
@@ -67,7 +66,7 @@ public class Ex01RestController {
 		
 		
 	}
-	@ResponseBody
+	
 	@RequestMapping("/2")
 	public List<Post> listObjectResponse() {
 		
@@ -80,7 +79,6 @@ public class Ex01RestController {
 		return postList;
 	}
 	
-	@ResponseBody
 	@RequestMapping("/3")
 	public ResponseEntity<Post> entityResponse() {
 		Post post1 = new Post("안녕하세요 가입인사 드립니다.", "hagulu", "안녕하세요. 가입했어요. 앞으로 잘 부탁 드립니다. 활동 열심히 하겠습니다.");

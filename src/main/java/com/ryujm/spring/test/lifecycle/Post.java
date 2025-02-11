@@ -23,12 +23,5 @@ public class Post {
 	public String getContent() {
 		return content;
 	}
-	public Map<String, String> postMapping(String title,String user,String content) {
-		Map<String, String> intMap = new HashMap<>();
-		intMap.put("title", title);
-		intMap.put("user", user);
-		intMap.put("content", content);
-		return intMap;
-	}
 	
 }
