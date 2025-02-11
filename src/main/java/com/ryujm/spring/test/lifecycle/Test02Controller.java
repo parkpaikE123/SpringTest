@@ -33,6 +33,7 @@ public class Test02Controller {
 			movieList.add(movieMap);
 		
 		
+		
 			movieMap.put("rate", 12);
 			movieMap.put("director", "크리스토퍼 놀란");
 			movieMap.put("time", "147");
@@ -57,5 +58,8 @@ public class Test02Controller {
 		
 		
 	}
+	
+	
+	
 	
 }
