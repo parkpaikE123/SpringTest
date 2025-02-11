@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/lifecycle/test02")
+@RequestMapping("/lifecycle/test0123")
 public class Test02ControllerClass {
 	
 	

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @ResponseBody()
 @Controller
-@RequestMapping("/lifecycle/test01")
+@RequestMapping("/lifecycle/test01234")
 public class Test01Controller {
 	
 	@RequestMapping("/1")
