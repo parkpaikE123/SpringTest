@@ -16,13 +16,10 @@ public class StoreController {
 	@Autowired
 	private StoreService storeService;
 	
-	
 	@ResponseBody
 	@RequestMapping("/db/store/list")
 	public List<Store> storeList() {
 		List<Store> storeList = storeService.getStoreList();
 		return storeList ;
-	}
-	
-	
+	}		
 }
