@@ -44,4 +44,9 @@ public class RealEstateService {
 		return count;
 	}
 	
+	public int updateRealEstate(int id) {
+		int count = realEstateRepository.updateRealEstate(id);
+		return count;
+	}
+	
 }

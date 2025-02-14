@@ -96,4 +96,14 @@
 			, #{rentPrice}
 		)
 	</insert>
+	<update id="updateRealEstate"
+			parameterType="int">
+				UPDATE 
+					`real_estate`
+				SET
+					`type` = '전세',
+					`PRICE` = 70000
+				WHERE
+					`id` = #{id}	
+	</update>
 </mapper>

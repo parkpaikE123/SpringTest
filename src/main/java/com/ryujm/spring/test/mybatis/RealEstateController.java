@@ -66,4 +66,19 @@ public class RealEstateController {
 		return "입력 성공 :" + count;
 	}
 	
+	// Parameter로 update 하기
+	@ResponseBody
+	@RequestMapping("/update")
+	public String updateRealEstate(@RequestParam("id") int id) {
+		int count = realEstateService.updateRealEstate(id);
+		return "수정 성공 : " + count;
+	}
+	
+	// Parameter로 Delete 하기
+	public String deleteRealEstate(@RequestParam("id") int id) {
+		
+	}
+	
+	
+	
 }
