@@ -18,4 +18,14 @@ public interface RealEstateRepository {
 	// 넓이 가격을 조건으로 조회
 	public List<RealEstate> selectRealEstate2(@Param("area")int area,@Param("price") int price);
 	
+	// 객체로 insert
+	public int createRealEstateByObject(RealEstate realEstate);
+	
+	// Parameter로 insert 하기
+	public int createEstate(@Param("realtorId") int realtorId
+						, @Param("address") String address
+						, @Param("area") int area
+						, @Param("type") String type
+						, @Param("price") int price
+						, @Param("rentPrice") int rentPrice);
 }

@@ -12,7 +12,7 @@ import com.ryujm.spring.test.mybatis.domain.RealEstate;
 import com.ryujm.spring.test.mybatis.service.RealEstateService;
 
 @Controller
-@RequestMapping("/mybatis/real-estate/select")
+@RequestMapping("/mybatis/real-estate")
 public class RealEstateController {
 	
 	@Autowired
@@ -20,7 +20,7 @@ public class RealEstateController {
 	
 	// id를 입력받아 해당 행을 조회
 	@ResponseBody
-	@RequestMapping("/1")
+	@RequestMapping("/select/1")
 	public RealEstate realEstate(@RequestParam("id") int id) {
 		RealEstate realEstate = realEstateService.getRealEstate(id);
 		return realEstate;
@@ -28,7 +28,7 @@ public class RealEstateController {
 	
 	// 월세를 입력받아 더 낮은 조건의 매물 조회
 	@ResponseBody
-	@RequestMapping("/2")
+	@RequestMapping("/select/2")
 	public List<RealEstate> realEstate1List(@RequestParam("rentPrice") int rentPrice) {
 		List<RealEstate> realEstate = realEstateService.getRealEstate1(rentPrice);
 		return realEstate;
@@ -36,15 +36,34 @@ public class RealEstateController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/3")
-	public List<RealEstate> realEstate2List(@RequestParam("area") int area,@RequestParam("price") int price) {
+	@RequestMapping("/select/3")
+	public List<RealEstate> realEstate2List(@RequestParam("area") int area
+			,@RequestParam("price") int price) {
 		List<RealEstate> realEstate = realEstateService.getRealEstate2(area, price);
 		return realEstate;
 	}
 	
+	// 객체로 insert 하기
+	@ResponseBody
+	@RequestMapping("/insert/1")
+	public String createRealEstateByObject() {
+		RealEstate realEstate = new RealEstate();
+		realEstate.setRealtorId(3);
+		realEstate.setAddress("푸르지용 리버 303동 1104호");
+		realEstate.setArea(89);
+		realEstate.setType("매매");
+		realEstate.setPrice(100000);
+		
+		int count = realEstateService.addRealEstateByObject(realEstate);
+		return "입력 성공 : " + count;
+	}
 	
-	
-	
-	
+	// Parameter로 insert 하기
+	@ResponseBody
+	@RequestMapping("/insert/2")
+	public String createRealEstate(@RequestParam("realtorId") int realtorId) {
+		int count = realEstateService.addRealEstate(realtorId, "썅떼빌리버 오피스텔 814호", 45, "월세", 100000, 120);
+		return "입력 성공 :" + count;
+	}
 	
 }

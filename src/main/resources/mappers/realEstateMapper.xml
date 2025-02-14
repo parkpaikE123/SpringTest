@@ -19,7 +19,6 @@
 			`real_estate`
 		WHERE
 			`id` = #{id}
-		
 	</select>
 	<select id="selectRealEstate1" parameterType="int"
 			resultType="com.ryujm.spring.test.mybatis.domain.RealEstate">
@@ -39,7 +38,7 @@
 			`rentPrice` &lt; #{rentPrice}
 			
 	</select>
-	<select id="selectRealEstate2" parameterType="int"
+	<select id="selectRealEstate2" parameterType="map"
 			resultType="com.ryujm.spring.test.mybatis.domain.RealEstate">
 		SELECT
 			`id`
@@ -54,8 +53,47 @@
 		FROM
 			`real_estate`
 		WHERE
-			<![CDATA[`area` >= #{area} AND `price` <= #{price}]]>
-		ORDER BY `updatedAt` DESC
-			
+			<![CDATA[`area` >= #{area} AND `price` <= #{price} AND `type` = '매매']]>
+		ORDER BY `id` DESC
 	</select>
+	<insert id="createRealEstateByObject" 
+	parameterType="com.ryujm.spring.test.mybatis.domain.RealEstate">
+		INSERT INTO
+		`real_estate`
+		(
+			`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+		)
+		VALUE
+		(
+			#{realtorId}
+			,#{address}
+			,#{area}
+			,#{type}
+			,#{price}
+		)
+	</insert>
+	<insert id="createEstate"
+			parameterType="map">
+		INSERT INTO
+		`real_estate`
+		(	`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+		)
+		VALUE
+		(	#{realtorId}
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+			, #{rentPrice}
+		)
+	</insert>
 </mapper>

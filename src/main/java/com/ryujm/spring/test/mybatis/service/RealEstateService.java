@@ -28,4 +28,20 @@ public class RealEstateService {
 		return realEstate2;
 	}
 	
+	public int addRealEstateByObject(RealEstate realEstate) {
+		int count = realEstateRepository.createRealEstateByObject(realEstate);
+		return count;
+	}
+	
+	public int addRealEstate(
+						int realtorId
+						, String address
+						, int area
+						, String type
+						, int price
+						, int rentPrice) {
+		int count = realEstateRepository.createEstate(realtorId, address, area, type, price, rentPrice);
+		return count;
+	}
+	
 }
