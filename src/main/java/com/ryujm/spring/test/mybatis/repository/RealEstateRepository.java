@@ -29,6 +29,11 @@ public interface RealEstateRepository {
 						, @Param("price") int price
 						, @Param("rentPrice") int rentPrice);
 	
-	public int updateRealEstate(@Param("id") int id);
+	public int updateRealEstate(@Param("id") int id
+								,@Param("type") String type
+								,@Param("price") int price);
+	
+	// Parameter로 delete 하기
+	public int deleteRealEstate(@Param("id") int id);
 }
 

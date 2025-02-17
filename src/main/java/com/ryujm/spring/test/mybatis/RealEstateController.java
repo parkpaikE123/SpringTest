@@ -66,17 +66,23 @@ public class RealEstateController {
 		return "입력 성공 :" + count;
 	}
 	
-	// Parameter로 update 하기
+	// 전달받은 Parameter로 update 하기
+	// update내용 = id를 기반으로 추적 (type, price 변경)
 	@ResponseBody
 	@RequestMapping("/update")
-	public String updateRealEstate(@RequestParam("id") int id) {
-		int count = realEstateService.updateRealEstate(id);
-		return "수정 성공 : " + count;
+	public String updateRealEstate(@RequestParam("id") int id
+									,@RequestParam("type") String type
+									,@RequestParam("price") int price) {
+		int count = realEstateService.updateRealEstate(22, "전세", 70000);
+		return "수정 결과 : " + count;
 	}
 	
 	// Parameter로 Delete 하기
+	@ResponseBody
+	@RequestMapping("/delete")
 	public String deleteRealEstate(@RequestParam("id") int id) {
-		
+		int count = realEstateService.deleteRealEstate(id);
+		return "삭제 성공 : " + count;
 	}
 	
 	

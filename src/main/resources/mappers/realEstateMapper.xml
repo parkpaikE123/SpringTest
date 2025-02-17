@@ -96,14 +96,20 @@
 			, #{rentPrice}
 		)
 	</insert>
-	<update id="updateRealEstate"
-			parameterType="int">
+	<update id="updateRealEstate" parameterType="int">
 				UPDATE 
 					`real_estate`
 				SET
-					`type` = '전세',
-					`PRICE` = 70000
+					`type` = #{type}
+					,`price` = #{price}
+					,`updatedAt` = now()
 				WHERE
 					`id` = #{id}	
 	</update>
+	<delete id="deleteRealEstate"
+			parameterType="map">
+		DELETE FROM 
+			`real_estate` 
+		WHERE `id` = #{id}
+	</delete>
 </mapper>
