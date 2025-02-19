@@ -49,18 +49,19 @@ public class SellerController {
 	}
 	
 	
-	// seller 검색 
+	// seller 검색 - keyword 요청
 	@GetMapping("/search")
 	public String searchSeller() {
 		return "/mvc/sellerSearch";
 	}
-	// keyword를 받아온 후 수행
+	
+	// keyword 를 받아온 후 수행
 	@GetMapping("/check")
-	public String checkSeller(@RequestParam("keyword") String keyword) {
+	public String checkSeller(Model model,@RequestParam("keyword") String keyword) {
+		Seller seller = sellerService.searchSeller(keyword);
+		model.addAttribute("seller", seller);
+		return "/mvc/sellerInfo";
 		
-		 sellerService.searchSeller(keyword);
-		
-		return "redirect:/mvc/seller/info";
 	}
 	
 	
