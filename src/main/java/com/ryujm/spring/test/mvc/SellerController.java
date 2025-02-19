@@ -49,6 +49,19 @@ public class SellerController {
 	}
 	
 	
+	// seller 검색 
+	@GetMapping("/search")
+	public String searchSeller() {
+		return "/mvc/sellerSearch";
+	}
+	// keyword를 받아온 후 수행
+	@GetMapping("/check")
+	public String checkSeller(@RequestParam("keyword") String keyword) {
+		
+		 sellerService.searchSeller(keyword);
+		
+		return "redirect:/mvc/seller/info";
+	}
 	
 	
 }

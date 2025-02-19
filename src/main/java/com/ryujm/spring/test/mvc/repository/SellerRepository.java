@@ -16,4 +16,6 @@ public interface SellerRepository {
 	// 가장 최근 추가된 판매자 정보
 	public Seller selectLastSeller();
 	
+	// 검색된 판매자 정보
+	public Seller searchSeller(@Param("keyword") String keyword);
 }

@@ -1,5 +1,6 @@
 package com.ryujm.spring.test.mvc.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,10 @@ public class SellerService {
 	}
 	public Seller getLastSeller() {
 		return sellerRepository.selectLastSeller();
+	}
+	// 검색 기능
+	public Seller searchSeller(String keyword) {
+		return sellerRepository.searchSeller(keyword);
 	}
 	
 }
