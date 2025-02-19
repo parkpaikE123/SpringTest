@@ -19,4 +19,18 @@
 			)
 		
 	</insert>
+	<select id="selectLastSeller" resultType="com.ryujm.spring.test.mvc.domain.Seller">
+		SELECT
+			`id`
+			, `profileImage`
+			, `nickname`
+			, `temperature`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`seller`
+		ORDER BY
+			`id` DESC
+		LIMIT 1
+	</select>
 </mapper>
