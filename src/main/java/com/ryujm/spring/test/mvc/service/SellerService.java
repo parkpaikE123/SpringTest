@@ -14,11 +14,11 @@ public class SellerService {
 	
 	public int addSeller(
 						String nickname
-						, double temperature
 						, String profileImage
+						, double temperature
 			) {
-		int count = sellerRepository.insertSeller(nickname, temperature, profileImage);
-		return count;
+		int count = sellerRepository.insertSeller(nickname, profileImage, temperature);
+		return count;	
 	}
 	
 }

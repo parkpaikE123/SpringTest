@@ -8,8 +8,7 @@ public interface SellerRepository {
 
 	public int insertSeller(
 							@Param("nickname") String nickname
-							, @Param("temperature") double temperature
 							, @Param("profileImage") String profileImage
-			);
+							, @Param("temperature") double temperature);
 	
 }

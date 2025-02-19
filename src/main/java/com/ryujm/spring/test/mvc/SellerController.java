@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ryujm.spring.test.mvc.service.SellerService;
 
@@ -18,21 +19,23 @@ public class SellerController {
 	@Autowired
 	private SellerService sellerService;
 	
-	// input 주소 연결
-	@PostMapping("/input")
-	public String inputSeller() {
-			
-		return "/mvc/sellerInput";
-	}
 	// input 기능
 	@PostMapping("/create")
-	public String inputSeller1(
+	@ResponseBody
+	public String createSeller(
 								@RequestParam("nickname") String nickname
-								, @RequestParam("temperature") double temperature
 								, @RequestParam("profileImage") String profileImgae
+								, @RequestParam("temperature") double temperature
 			) {
-		int count = sellerService.addSeller(nickname, temperature, profileImgae);
+		int count = sellerService.addSeller(nickname, profileImgae, temperature);
 		return "추가 성공 : " + count;
+	}
+	
+	// input 주소 연결
+	@GetMapping("/input")
+	public String inputSeller() {
+		
+		return "/mvc/sellerInput";
 	}
 	
 }

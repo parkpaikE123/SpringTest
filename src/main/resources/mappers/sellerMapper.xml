@@ -4,17 +4,18 @@
  
  <mapper namespace="com.ryujm.spring.test.mvc.repository.SellerRepository">
 	<insert id="insertSeller" parameterType="map">
-		INSERT INTO `seller`
+		INSERT INTO 
+			`seller`
 			(
 				`nickname`
-				, `temperature`
 				, `profileImage`
+				, `temperature`
 			)
 		VALUE
 			(
 				#{nickname}
-				, #{temperature}
 				, #{profileImage}
+				, #{temperature}
 			)
 		
 	</insert>
