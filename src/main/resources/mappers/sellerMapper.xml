@@ -33,7 +33,8 @@
 			`id` DESC
 		LIMIT 1
 	</select>
-	<select id="searchSeller" resultType="com.ryujm.spring.test.mvc.domain.Seller">
+	<select id="selectSeller" 
+	resultType="com.ryujm.spring.test.mvc.domain.Seller">
 		SELECT
 			`id`
 			, `profileImage`
@@ -44,6 +45,6 @@
 		FROM
 			`seller`
 		WHERE
-			`nickname` = #{keyword}
+			`id` = #{id}
 	</select>
 </mapper>

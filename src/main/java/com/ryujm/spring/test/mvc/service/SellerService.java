@@ -25,9 +25,14 @@ public class SellerService {
 	public Seller getLastSeller() {
 		return sellerRepository.selectLastSeller();
 	}
-	// 검색 기능
-	public Seller searchSeller(String keyword) {
-		return sellerRepository.searchSeller(keyword);
+	
+	public Seller getSeller(int id) {
+		return sellerRepository.selectSeller(id);
 	}
+	
+//	// 검색 기능
+//	public Seller searchSeller(String keyword) {
+//		return sellerRepository.searchSeller(keyword);
+//	}
 	
 }
