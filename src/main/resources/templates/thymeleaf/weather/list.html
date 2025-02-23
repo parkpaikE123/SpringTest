@@ -1,11 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>날씨정보페이지</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/thymeleaf/style.css">
 </head>
 <body>
+	
+	<div class="container d-flex" id="wrap">
+		<nav class="mt-4 nav-bar bg-primary">
+			<logo class="logo">
+				<img width="300" alt="기상청로고" src="https://jnilbo.com/upimages/gisaimg/202403/24_731035-24.jpg">
+			</logo>
+			<ul class="mt-4 nav">
+				<li class="nav-items"><a class="nav-link text-white" href="*">날씨</a></li>
+				<li class="nav-items"><a class="nav-link text-white" href="*">날씨입력</a></li>
+				<li class="nav-items"><a class="nav-link text-white" href="*">테마날씨</a></li>
+				<li class="nav-items"><a class="nav-link text-white" href="*">관측기후</a></li>
+			</ul>
+		</nav>
+		<div>
+			<table class="table">
+				<div class="banner ml-4">과거날씨</div>
+				<thead>
+					<tr>
+						<th>날짜</th>
+						<th>날씨</th>
+						<th>기온</th>
+						<th>강수량</th>
+						<th>미세먼지</th>
+						<th>풍속</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="weather:${weatherHistory}">
+						<td th:text="${#temporals.format(weather.date, 'yyyy년 M월 d일')}">1002-32-10</td>
+						<td th:text="${weather.weather}">맑음</td>
+						<td th:text="${weather.temperature}">30.2<sup>o</sup>C</td>
+						<td th:text="${weather.precipitation}">12.3mm</td>
+						<td th:text="${weather.microDust}">보통</td>
+						<td th:text="${wather.windSpeed}">2.9km/h</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 
+
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 </body>
 </html>

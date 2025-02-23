@@ -1,1 +1,27 @@
 @charset "UTF-8";
+
+#wrap {
+	width : 1200px;
+	height : 800px;
+}
+.nav-bar{
+	width:300px;
+}
+.table {
+	width:900px;
+	height:800px;
+}
+.banner{
+	font-size:50px;
+}
+.menu {
+	font-size:30px;
+	font-weight:bold;
+	font-color:white;
+}
+.nav-items{
+	width:300px;
+}
+.nav-link {
+	font-weight:bold;
+}

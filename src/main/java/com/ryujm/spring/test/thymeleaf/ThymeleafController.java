@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ryujm.spring.test.thymeleaf.domain.Member;
 import com.ryujm.spring.test.thymeleaf.domain.WeatherHistory;
+import com.ryujm.spring.test.thymeleaf.service.WeatherHistoryService;
 
 @Controller
 @RequestMapping("/thymeleaf")
@@ -144,11 +145,12 @@ public class ThymeleafController {
 	}
 	
 	WeatherHistory weatherHistory = new WeatherHistory();
-	
+	WeatherHistoryService weatherHistoryService;
 	@GetMapping("/test04")
 	public String test04(Model model) {
+		weatherHistory = weatherHistoryService.getWeatherList();
 		model.addAttribute("weatherHistory", weatherHistory);
-		return "/thymeleaf/test04";
+		return "/thymeleaf/weather/list";
 	}
 	
 	
