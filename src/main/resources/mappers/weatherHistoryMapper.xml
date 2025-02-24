@@ -16,4 +16,47 @@
 		FROM
 		`weatherhistory`
 	</select>
+	<insert id="createWetherHistory" parameterType="map">
+		INSERT INTO
+			`weatherhistory`
+			(
+				`date`
+				,`weather`
+				,`microDust`
+				,`temperatures`
+				,`precipitation`
+				,`windSpeed`
+			)
+		VALUE
+			(
+				#{date}
+				,#{weather}
+				,#{microDust}
+				,#{temperatures}
+				,#{precipitation}
+				,#{windSpeed}
+			)
+	</insert>
+	<insert id="insertWeatherByObject"
+	parameterType="com.ryujm.spring.test.thymeleaf.domain.WeatherHistory">
+		INSERT INTO
+			`weatherhistory`
+			(
+				`date`
+				,`weather`
+				,`microDust`
+				,`temperatures`
+				,`precipitation`
+				,`windSpeed`
+			)
+		VALUE
+			(
+				#{date}
+				,#{weather}
+				,#{microDust}
+				,#{temperatures}
+				,#{precipitation}
+				,#{windSpeed}
+			)
+	</insert>
 </mapper>

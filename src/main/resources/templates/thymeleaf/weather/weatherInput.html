@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/thymeleaf/inputstyle.css">
+</head>
+<body>
+
+	<div class="container">
+		<div id="wrap" class="d-flex mt-4">
+			<nav class="nav">
+				<logo class="logo">
+					<img width="200" alt="기상청로고" src="https://jnilbo.com/upimages/gisaimg/202403/24_731035-24.jpg">
+				</logo>
+				<ul class="mt-4 nav-bar bg-primary">
+					<li class="nav-items"><a class="nav-link text-white" href="*">날씨</a></li>
+					<li class="nav-items"><a class="nav-link text-white" href="*">날씨입력</a></li>
+					<li class="nav-items"><a class="nav-link text-white" href="*">테마날씨</a></li>
+					<li class="nav-items"><a class="nav-link text-white" href="*">관측기후</a></li>
+				</ul>
+			</nav>
+			<info class="inputMemo">
+				<h2>날씨 입력</h2>
+				<form method="get" action="/thymeleaf/weather/create">
+					<div class="d-flex text-align-center mt-4 mb-4">
+						<span>날짜</span>
+						<input type="text" class="form-control col-3 ml-2 mr-4" name="date">
+						<span>날씨</span>
+						<select name="weather" class="form-control col-2">
+							<option>맑음</option>
+							<option>구름조금</option>
+							<option>흐림</option>
+							<option>비</option>
+						</select>
+						<span class="ml-4 mr-2">미세먼지</span>
+						<select name="microDust" class="form-control col-2">
+							<option>좋음</option>
+							<option>보통</option>
+							<option>나쁨</option>
+							<option>최악</option>
+						</select>
+					</div>
+					<div class="d-flex mt-4">
+						<span>기온</span>
+						<input type="text" name="temperatures" class="form-control col-3 ml-2 mr-4">
+						<span>강수량</span>
+						<input type="text" name="precipitation" class="form-control col-3 ml-2">
+						<span>풍속</span>
+						<input type="text" name="windSpeed" class="form-control col-3 ml-2">
+					</div>
+					<button type="submit" class="btn btn-success mt-4">저장</button>
+				</form>
+			</info>
+		</div>
+	</div>
+
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</body>
+</html>

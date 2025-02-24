@@ -145,17 +145,6 @@ public class ThymeleafController {
 		return "/thymeleaf/test03";
 	}
 	
-	@Autowired
-	WeatherHistoryService weatherHistoryService;
-	
-	List<WeatherHistory> weatherList = new ArrayList<>();
-	@GetMapping("/test04")
-	public String test04(Model model) {
-		WeatherHistory weatherHistory = new WeatherHistory();
-		weatherList = weatherHistoryService.getWeatherList(weatherHistory);
-		model.addAttribute("weatherHistory",weatherList);
-		return "/thymeleaf/weather/list";
-	}
 	
 	
 }

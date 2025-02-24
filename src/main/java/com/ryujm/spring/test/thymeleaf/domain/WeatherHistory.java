@@ -3,16 +3,21 @@ package com.ryujm.spring.test.thymeleaf.domain;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class WeatherHistory {
 
 	private int id;
+	@DateTimeFormat(pattern="yyyy년M월d일")
 	private LocalDate date;
 	private String weather;
 	private double temperatures;
+	private double precipitation;
 	private String microDust;
 	private double windSpeed;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
+	
 	public int getId() {
 		return id;
 	}
@@ -36,6 +41,12 @@ public class WeatherHistory {
 	}
 	public void setTemperatures(double temperatures) {
 		this.temperatures = temperatures;
+	}
+	public double getPrecipitation() {
+		return precipitation;
+	}
+	public void setPrecipitation(double precipitation) {
+		this.precipitation = precipitation;
 	}
 	public String getMicroDust() {
 		return microDust;
@@ -61,6 +72,7 @@ public class WeatherHistory {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
 	
 	
 	

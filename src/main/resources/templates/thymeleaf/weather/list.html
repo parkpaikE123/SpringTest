@@ -21,7 +21,7 @@
 			</ul>
 		</nav>
 		<div>
-			<table class="table">
+			<table class="table text-center">
 				<div class="banner ml-4">과거날씨</div>
 				<thead>
 					<tr>
@@ -36,18 +36,21 @@
 				<tbody>
 					<tr th:each="weather:${weatherHistory}">
 						<td th:text="${#temporals.format(weather.date, 'yyyy년 M월 d일')}">1002-32-10</td>
-						<td th:text="${weather.weather}">맑음</td>
-						<td th:text="${weather.temperatures}">30.2<sup>o</sup>C</td>
-						<td th:text="${weather.precipitation}">12.3mm</td>
+						<td th:switch="${weather.weather}">
+							<span th:case="맑음"><img alt="맑은 그림" src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></span>
+							<span th:case="구름조금"><img alt="구름조금" src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"></span>
+							<span th:case="흐림"><img alt="흐림" src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg"></span>
+							<span th:case="비"><img alt="비" src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></span>
+						</td>
+						<td th:text="|${weather.temperatures}℃|">30.2<sup>o</sup>C</td>
+						<td th:text="|${weather.precipitation}mm|">12.3mm</td>
 						<td th:text="${weather.microDust}">보통</td>
-						<td th:text="${weather.windSpeed}">2.9km/h</td>
+						<td th:text="|${weather.windSpeed}km/h|">2.9km/h</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-
-
 
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
