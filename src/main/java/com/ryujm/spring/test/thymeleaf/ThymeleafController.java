@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -144,12 +145,15 @@ public class ThymeleafController {
 		return "/thymeleaf/test03";
 	}
 	
-	WeatherHistory weatherHistory = new WeatherHistory();
+	@Autowired
 	WeatherHistoryService weatherHistoryService;
+	
+	List<WeatherHistory> weatherList = new ArrayList<>();
 	@GetMapping("/test04")
 	public String test04(Model model) {
-		weatherHistory = weatherHistoryService.getWeatherList();
-		model.addAttribute("weatherHistory", weatherHistory);
+		WeatherHistory weatherHistory = new WeatherHistory();
+		weatherList = weatherHistoryService.getWeatherList(weatherHistory);
+		model.addAttribute("weatherHistory",weatherList);
 		return "/thymeleaf/weather/list";
 	}
 	

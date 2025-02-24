@@ -9,7 +9,7 @@
 			`id`
 			,`date`
 			,`weather`
-			,`temperature`
+			,`temperatures`
 			,`precipitation`
 			,`microDust`
 			,`windSpeed` 

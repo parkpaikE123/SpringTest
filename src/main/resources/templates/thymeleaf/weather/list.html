@@ -37,10 +37,10 @@
 					<tr th:each="weather:${weatherHistory}">
 						<td th:text="${#temporals.format(weather.date, 'yyyy년 M월 d일')}">1002-32-10</td>
 						<td th:text="${weather.weather}">맑음</td>
-						<td th:text="${weather.temperature}">30.2<sup>o</sup>C</td>
+						<td th:text="${weather.temperatures}">30.2<sup>o</sup>C</td>
 						<td th:text="${weather.precipitation}">12.3mm</td>
 						<td th:text="${weather.microDust}">보통</td>
-						<td th:text="${wather.windSpeed}">2.9km/h</td>
+						<td th:text="${weather.windSpeed}">2.9km/h</td>
 					</tr>
 				</tbody>
 			</table>
