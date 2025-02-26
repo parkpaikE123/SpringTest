@@ -22,5 +22,18 @@ public class FavoriteService {
 	public List<Favorite> getFavoriteList(Favorite favorite) {
 		return favoriteRepository.getfavorite(favorite);
 	}
+	// 중복확인 서비스
+	public boolean isDuplicateUrl(String url) {
+		int count = favoriteRepository.selectCountByUrl(url);
+		if(count == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	// 삭제 기능
+	public List<Favorite> deleteRow(int id) {
+		 favoriteRepository.deleteColumn(id);
+	}
 	
 }

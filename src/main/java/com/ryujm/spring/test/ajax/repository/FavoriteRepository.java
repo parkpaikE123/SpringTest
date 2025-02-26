@@ -14,4 +14,10 @@ public interface FavoriteRepository {
 							,@Param("url") String url);
 	
 	public List<Favorite> getfavorite(Favorite favorite);
+	
+	// 중복확인용 행 개수 조회
+	public int selectCountByUrl(@Param("url") String url);
+	
+	// 삭제기능을 위한 id 를 가지고 해당 행 조회
+	public List<Favorite> deleteColumn(@Param("id") int id);
 }

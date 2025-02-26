@@ -48,7 +48,6 @@ public class FavoriteController {
 			resultMap.put("result", "fail");
 		}
 		
-		
 		return resultMap;
 	}
 	
@@ -66,6 +65,23 @@ public class FavoriteController {
 		return"/ajax/favorite/favoritelist";
 	}
 	
+	// 중복확인 API
+	@ResponseBody
+	@PostMapping("duplicate-url")
+	public Map<String, Boolean> isDuplicateUrl(@RequestParam("url") String url) {
+		boolean isDuplicate = favoriteService.isDuplicateUrl(url);
+		Map<String, Boolean> resultMap = new HashMap<>();
+		if(isDuplicate) {
+			resultMap.put("isDuplicate", true);
+		} else {
+			resultMap.put("isDuplicate", false);
+		}
+		return resultMap;
+	}
+	// Delete API
+	public deleteRow(@RequestParam("id") int id) {
+		
+	}
 	
 	
 }
