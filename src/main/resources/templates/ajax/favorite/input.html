@@ -13,7 +13,7 @@
 		<input type="text" class="form-control" id="siteName">
 		<label>주소</label>
 		<input type="text" class="form-control" id="urlAddress">
-		<button class="btn btn-success w-100 mt-3" id="addBtn">추가</button>
+		<button class="btn btn-success w-100 mt-3" id="addBtn" onClick="location.href='localhost:8080/ajax/favorite/list'">추가</button>
 	</div>
 
 
@@ -50,8 +50,8 @@
 				, data:{"name":name, "url":url}
 				, success:function(response) {
 					if(response.result == "success"){
-						alert("성공");
-						
+						alert("즐겨찾기 추가 성공");
+						window.location.href="/ajax/favorite/list";
 						
 					} else {
 						alert("즐겨찾기 추가 실패");

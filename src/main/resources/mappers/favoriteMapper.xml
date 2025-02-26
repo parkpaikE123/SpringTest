@@ -14,7 +14,7 @@
 		VALUE
 		(
 			#{name}
-			,#{url}
+			, #{url}
 		)
 	</insert>
 	<select id="getfavorite" resultType="com.ryujm.spring.test.ajax.domain.Favorite">

@@ -18,6 +18,7 @@ public class FavoriteService {
 		int count = favoriteRepository.insertFavorite(name, url);
 		return count;
 	}
+	
 	public List<Favorite> getFavoriteList(Favorite favorite) {
 		return favoriteRepository.getfavorite(favorite);
 	}

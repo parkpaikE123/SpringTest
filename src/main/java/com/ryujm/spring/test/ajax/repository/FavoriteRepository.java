@@ -12,5 +12,6 @@ public interface FavoriteRepository {
 
 	public int insertFavorite(@Param("name") String name
 							,@Param("url") String url);
+	
 	public List<Favorite> getfavorite(Favorite favorite);
 }

@@ -29,6 +29,8 @@ public class FavoriteController {
 	
 	@Autowired
 	private FavoriteService favoriteService;
+	
+	// 사이트 이름과 url을 전달 받고 저장하는 API
 	@ResponseBody
 	@PostMapping("/create")
 	public Map<String, String> addFavorite(
@@ -37,7 +39,7 @@ public class FavoriteController {
 					) {
 		int count = favoriteService.createFavorite(name, url);
 		
-		// 성공 실패를 여부를 데이터 형식으로 전달
+		// 성공, 실패의 여부를 데이터 형식으로 전달
 		Map<String, String> resultMap = new HashMap<>();
 		
 		if(count == 1) {
@@ -52,10 +54,15 @@ public class FavoriteController {
 	
 	@GetMapping("/list") 
 	public String favoriteList(Model model) {
+		
 		List<Favorite> favoriteList = new ArrayList<>();
+		
 		Favorite favorite = null;
+		
 		favoriteList = favoriteService.getFavoriteList(favorite);
+		
 		model.addAttribute("favorite", favoriteList);
+		
 		return"/ajax/favorite/favoritelist";
 	}
 	
