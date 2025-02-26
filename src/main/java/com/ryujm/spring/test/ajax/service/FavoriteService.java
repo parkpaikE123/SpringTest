@@ -32,8 +32,9 @@ public class FavoriteService {
 		}
 	}
 	// 삭제 기능
-	public List<Favorite> deleteRow(int id) {
-		 favoriteRepository.deleteColumn(id);
+	public int deleteRow(int id) {
+		 int count = favoriteRepository.deleteColumn(id);
+		 return count;
 	}
 	
 }

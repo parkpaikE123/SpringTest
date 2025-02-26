@@ -33,4 +33,11 @@
 		WHERE
 			`url` = #{url}	
 	</select>
+	<delete id="deleteColumn" parameterType="string">
+		DELETE
+		FROM
+			`favorite`
+		WHERE
+			`id` = #{id}
+	</delete>
 </mapper>

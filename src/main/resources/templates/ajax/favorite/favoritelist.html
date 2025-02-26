@@ -19,10 +19,10 @@
 			</thead>
 			<tbody>
 				<tr th:each="favorite, status:${favorite}">
-					<td th:text="${status.count}">1</td>
+					<td th:text="${favorite.id}">1</td>
 					<td th:text="${favorite.name}">마국</td>
 					<td th:text="${favorite.url}">https://234341</td>
-					<td><button value="${status.count}" class="btn btn-danger delete-btn">삭제</button></td>
+					<td><button class="btn btn-danger delete-btn">삭제</button></td>
 				</tr>
 			</tbody>
 		</table>
@@ -39,12 +39,18 @@
 <script>
 	$(function() {
 		$(".delete-btn").on("click", function() {
+			let id = $(".delete-btn").val();
 			$.ajax({
-				type:"get"
-				,url:"/ajax/favorite/list"
+				type:"post"
+				,url:"/ajax/favorite/delete"
 				,data:{"id":id}
 				,success:function(response) {
-					
+					if(response.id == 1) {
+						alert("해당 행을 삭제하였습니다");
+						location.href="/ajax/favorite/list";
+					} else {
+						alert("삭제 실패");
+					}
 				}
 				,error:function() {
 					alert("삭제 요청중 에러 발생!");

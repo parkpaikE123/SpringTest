@@ -78,8 +78,20 @@ public class FavoriteController {
 		}
 		return resultMap;
 	}
-	// Delete API
-	public deleteRow(@RequestParam("id") int id) {
+	
+	// 삭제 API
+	@ResponseBody
+	@PostMapping("delete")
+	public Map<String, Integer> deleteRow(@RequestParam("id") int id) {
+		
+		int deleteCount = favoriteService.deleteRow(id);
+		
+		Map<String, Integer> resultMap = new HashMap<>();
+		
+		resultMap.put("id", deleteCount);
+		
+		return resultMap;
+		
 		
 	}
 	

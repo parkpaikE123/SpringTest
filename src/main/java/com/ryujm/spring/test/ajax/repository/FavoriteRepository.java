@@ -19,5 +19,5 @@ public interface FavoriteRepository {
 	public int selectCountByUrl(@Param("url") String url);
 	
 	// 삭제기능을 위한 id 를 가지고 해당 행 조회
-	public List<Favorite> deleteColumn(@Param("id") int id);
+	public int deleteColumn(@Param("id") int id);
 }
