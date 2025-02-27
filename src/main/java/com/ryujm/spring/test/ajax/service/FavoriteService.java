@@ -25,11 +25,13 @@ public class FavoriteService {
 	// 중복확인 서비스
 	public boolean isDuplicateUrl(String url) {
 		int count = favoriteRepository.selectCountByUrl(url);
-		if(count == 0) {
-			return false;
-		} else {
-			return true;
-		}
+		
+//		if(count == 0) {
+//			return false;
+//		} else {
+//			return true;
+//		}
+		return count !=0;
 	}
 	// 삭제 기능
 	public int deleteRow(int id) {

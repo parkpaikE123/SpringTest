@@ -22,7 +22,7 @@
 					<td th:text="${favorite.id}">1</td>
 					<td th:text="${favorite.name}">마국</td>
 					<td th:text="${favorite.url}">https://234341</td>
-					<td><button class="btn btn-danger delete-btn">삭제</button></td>
+					<td> <button class="btn btn-danger btn-sm delete-btn" th:data-favorite-id="${favorite.id}">삭제</button></td>
 				</tr>
 			</tbody>
 		</table>
@@ -39,24 +39,28 @@
 <script>
 	$(function() {
 		$(".delete-btn").on("click", function() {
-			let id = $(".delete-btn").val();
+			
+			// 어떤 버튼 태그 객체에 이벤트가 발생했는지 확인
+			// 이벤트가 발생한 태그 객체
+			// let id = $(this).val();
+			let id = $(this).data("favorite-id");
+			
 			$.ajax({
-				type:"post"
-				,url:"/ajax/favorite/delete"
-				,data:{"id":id}
-				,success:function(response) {
-					if(response.id == 1) {
-						alert("해당 행을 삭제하였습니다");
-						location.href="/ajax/favorite/list";
+				type:"get"
+				, url:"/ajax/favorite/delete"
+				, data:{"id":id}
+				, success:function(response) {
+					if(response.result == "success") {
+						location.reload();
 					} else {
 						alert("삭제 실패");
 					}
 				}
-				,error:function() {
-					alert("삭제 요청중 에러 발생!");
+				, error:function(){
+					alert("삭제 에러!");
 				}
 			})
-		})
+		});
 	})
 </script>
 </body>

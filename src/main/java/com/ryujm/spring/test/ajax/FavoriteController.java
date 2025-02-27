@@ -70,25 +70,34 @@ public class FavoriteController {
 	@PostMapping("duplicate-url")
 	public Map<String, Boolean> isDuplicateUrl(@RequestParam("url") String url) {
 		boolean isDuplicate = favoriteService.isDuplicateUrl(url);
+		
 		Map<String, Boolean> resultMap = new HashMap<>();
-		if(isDuplicate) {
-			resultMap.put("isDuplicate", true);
-		} else {
-			resultMap.put("isDuplicate", false);
-		}
+		
+		resultMap.put("isDuplicate", isDuplicate);
+//		if(isDuplicate) {
+//			// 중복 됨
+//			resultMap.put("isDuplicate", true);
+//		} else {
+//			// 중복 안됨
+//			resultMap.put("isDuplicate", false);
+//		}
 		return resultMap;
 	}
 	
 	// 삭제 API
 	@ResponseBody
-	@PostMapping("delete")
-	public Map<String, Integer> deleteRow(@RequestParam("id") int id) {
+	@GetMapping("delete")
+	public Map<String, String> deleteRow(@RequestParam("id") int id) {
 		
-		int deleteCount = favoriteService.deleteRow(id);
+		int count = favoriteService.deleteRow(id);
 		
-		Map<String, Integer> resultMap = new HashMap<>();
+		Map<String, String> resultMap = new HashMap<>();
 		
-		resultMap.put("id", deleteCount);
+		if(count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
 		
 		return resultMap;
 		

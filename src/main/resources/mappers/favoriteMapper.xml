@@ -33,7 +33,7 @@
 		WHERE
 			`url` = #{url}	
 	</select>
-	<delete id="deleteColumn" parameterType="string">
+	<delete id="deleteColumn" parameterType="int">
 		DELETE
 		FROM
 			`favorite`

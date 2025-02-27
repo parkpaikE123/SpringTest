@@ -14,11 +14,11 @@
 		<input type="text" class="form-control" id="siteName">
 		<label>주소</label>
 		<div class="d-flex">
-			<input type="text" class="form-control col-6" id="urlAddress">
-			<button id="duplicateBtn" class="btn btn-primary ml-3">중복확인</button>
+			<input type="text" class="form-control col-9" id="urlAddress">
+			<button id="duplicateBtn" class="btn btn-primary ml-3 col-1" >중복확인</button>
 		</div>	
-		<label id="duplicateError" class="text-warning d-none">중복된 url입니다</label>
-		<label id="duplicateSuccess" class="text-primary d-none">사용 가능한 url 입니다</label>
+		<label id="duplicateError" class="text-danger d-none">중복된 url입니다</label>
+		<label id="duplicateSuccess" class="text-primary d-none">저장 가능한 url 입니다</label>
 		<button class="btn btn-success w-100 mt-3" id="addBtn" onClick="location.href='localhost:8080/ajax/favorite/list'">추가</button>
 	</div>
 
@@ -48,12 +48,16 @@
 				,success:function(response){
 					if(response.isDuplicate){
 						$("#duplicateError").removeClass("d-none");
+						$("#duplicateSuccess").addClass("d-none");
+						return;
 					} else {
+						$("#duplicateError").addClass("d-none");
 						$("#duplicateSuccess").removeClass("d-none");
+						return;
 					}
 				}
 				,error:function() {
-					alert("주소 중복 체크 에러!");
+					alert("주소 중복 확인 에러!");
 				}
 			})
 			
