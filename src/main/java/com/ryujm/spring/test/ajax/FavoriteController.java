@@ -100,9 +100,8 @@ public class FavoriteController {
 		}
 		
 		return resultMap;
-		
-		
 	}
+	
 	
 	
 }

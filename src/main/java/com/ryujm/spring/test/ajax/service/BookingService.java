@@ -25,8 +25,19 @@ public class BookingService {
 					, int day
 					, int headcount
 					, String phoneNumber) {
-		int count = bookingRepository.insertBooking(name, date, day, headcount, phoneNumber);
+		int count = bookingRepository.insertBooking(name, date, day, headcount, phoneNumber, "대기중");
 		return count;
+	}
+	
+	public int deleteBooking(int id) {
+		int count = bookingRepository.deleteBooking(id);
+		return count;
+	}
+	
+	// 예약 조회 기능
+	public Booking getBooking(String name, String phoneNumber) {
+		Booking booking = bookingRepository.selectBooking(name, phoneNumber);
+		return booking;
 	}
 	
 }

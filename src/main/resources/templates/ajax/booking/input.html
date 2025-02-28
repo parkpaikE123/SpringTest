@@ -8,8 +8,33 @@
 </head>
 <body>
 
-	<div id="wrap">
-	
+	<div id="wrap" class="container text-center">
+		<logo class="logo display-2">통나무 팬션</logo>
+		<nav>
+			<ul class="nav">
+				<li class="nav-item"><a href="*" class="nav-link text-white">펜션소개</a></li>
+				<li class="nav-item"><a href="*" class="nav-link text-white">객실보기</a></li>
+				<li class="nav-item"><a href="*" class="nav-link text-white">예약하기</a></li>
+				<li class="nav-item"><a href="*" class="nav-link text-white">예약목록</a></li>
+			</ul>
+		</nav>
+		<section class="article bg-warning">
+			<div class="text-center">
+				<div class="display-4">예약 하기</div>
+				<div>이름</div>
+				<input class="col-6 form-control" type="text" id="nameInput">
+				<div>예약날짜</div>
+				<input class="col-6 form-control"  type="text" id="dateInput">
+				<div>숙박일수</div>
+				<input class="col-6 form-control"  type="text" id="dayInput">
+				<div>숙박인원</div>
+				<input class="col-6 form-control"  type="text" id="headcountInput">
+				<div>전화번호</div>
+				<input class="col-6 form-control"  type="text" id="phoneNumberInput">
+			</div>
+			<button class="btn btn-success col-6 mt-2" id="bookingBtn">예약하기</button>
+		</section>
+		<footer></footer>
 	</div>
 
 
@@ -24,5 +49,65 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	$(function() {
+		$("#bookingBtn").on("click", function() {
+			let name = $("#nameInput").val();
+			let date = $("#dateInput").val();
+			let day = $("#dayInput").val();
+			let headcount = $("#headcountInput").val();
+			let phoneNumber = $("#phoneNumberInput").val();
+			
+			if(name == ""){
+				alert("이름을 입력하세요");
+				return;
+			}
+			if(date == "") {
+				alert("날짜를 입력하세요")
+				return;
+			}
+			if(day == "") {
+				alert("일수를 입력하세요")
+				return;
+			}
+			
+			// day가 숫자가 아닌 경우
+			if(isNaN(day)) {
+				alert("일수는 숫자만 입력 가능합니다");
+				return;
+			}
+			
+			if(headcount == "") {
+				alert("인원을 입력하세요")
+				return;
+			}
+			if(isNaN(headcount)) {
+				alert("인원은 숫자만 입력 가능합니다");
+				return;
+			}
+			if(phoneNumber == "") {
+				alert("번호를 입력하세요")
+				return;
+			}
+			$.ajax({
+				type:"post"
+				, url:"/ajax/booking/insert"
+				,data:{"name":name, "date":date, "day":day, "headcount":headcount, "phoneNumber":phoneNumber}
+				,success:function(response){
+					if(response.result == "success") {
+						location.href="/ajax/booking/list";
+					} else {
+						alert("예약 실패!");
+					}
+				}
+				,error:function(){
+					alert("예약 에러");
+				}
+			})
+			
+			
+		})
+	})
+</script>
 </body>
 </html>

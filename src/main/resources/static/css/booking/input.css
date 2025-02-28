@@ -4,3 +4,15 @@
 	height:800px;
 	background-color:blue;
 }
+
+.nav {
+	height:60px;
+	background-color:brown;
+}
+
+.article {
+	height:500px;
+}
+input{
+	item-align:center;
+}

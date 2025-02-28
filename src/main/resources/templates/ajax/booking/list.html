@@ -10,8 +10,8 @@
 
 
 	<div id="wrap" class="container mt-4 text-center">
-		<logo class="display-2">통나무펜션</logo>
-		<nav class="d-flex">
+		<logo class="display-2 mb-2">통나무펜션</logo>
+		<nav class="d-flex mt-2">
 			<ul class="nav">
 				<li class="nav-item"><a href="*" class="nav-link text-white">펜션소개</a></li>
 				<li class="nav-item"><a href="*" class="nav-link text-white">객실보기</a></li>
@@ -19,9 +19,9 @@
 				<li class="nav-item"><a href="*" class="nav-link text-white">예약목록</a></li>
 			</ul>
 		</nav>
-		<div class="display-4">예약 목록 보기</div>
+		<div class="display-4 mt-2">예약 목록 보기</div>
 		<div>
-			<table class="table">
+			<table class="table mt-2">
 				<thead>
 					<tr>
 						<th>이름</th>
@@ -46,7 +46,7 @@
 							<span th:case="취소" class="text-danger">취소</span>
 							<span th:case="*" th:text="${booking.state}">기본</span>
 						</td>
-						<td><button class="btn btn-danger btn-sm">삭제</button></td>
+						<td><button class="btn delete-btn btn-danger btn-sm" th:data-delete-id="${booking.id}">삭제</button></td>
 					</tr>
 				</tbody>
 			</table>
@@ -72,7 +72,26 @@
 	
 <script>
 	$(function() {
-		
+		$(".delete-btn").on("click", function() {
+			
+			let bookingId = $(this).data("delete-id");
+			$.ajax({
+				type:"get"
+				, url:"/ajax/booking/delete"
+				, data:{"id":bookingId}
+				, success:function(response) {
+					if(response.result == "success") {
+						location.reload();
+					}else {
+						alert("삭제 실패");
+					}
+				}
+				,error:function(){
+					alert("삭제 에러!");
+				}
+			})
+			
+		});
 	})
 </script>
 </body>

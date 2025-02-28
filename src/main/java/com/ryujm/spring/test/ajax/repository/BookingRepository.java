@@ -18,6 +18,14 @@ public interface BookingRepository {
 						,@Param("date") LocalDate date
 						,@Param("day") int day
 						,@Param("headcount") int headcount
-						,@Param("phoneNumber") String phoneNumber);
+						,@Param("phoneNumber") String phoneNumber
+						, @Param("state") String state);
+	
+	// 삭제 기능
+	public int deleteBooking(@Param("id") int id);
+	
+	// 예약 조회 기능
+	public Booking selectBooking(@Param("name") String name
+						, @Param("phoneNumber") String phoneNumber);
 	
 }

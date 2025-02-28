@@ -1,0 +1,42 @@
+@charset "UTF-8";
+#wrap {
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+}
+header {
+    height: 100px;
+}
+section {
+    height: 600px;
+}
+nav {
+    height: 50px;
+    background-color: rgb(153, 114, 41);
+}
+.reservation {
+    height: 250px;
+    background-color: rgb(168, 111, 6);
+}
+.loginZone {
+    height: 250px;
+    background-color: rgb(209, 141, 15);
+}
+.infoDesk {
+    height: 250px;
+    background-color: rgb(168, 111, 6);
+}
+
+.text-box {
+    width: 300px;
+}
+menu {
+    height: 200px;
+}
+
+footer {
+    height: 80px;
+}
+.btn {
+    font-size: 10px;
+}
