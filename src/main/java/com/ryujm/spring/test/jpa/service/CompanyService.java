@@ -12,7 +12,7 @@ import com.ryujm.spring.test.jpa.repository.CompanyRepository;
 public class CompanyService {
 	
 	@Autowired
-	CompanyRepository companyRepository;
+	private CompanyRepository companyRepository;
 	
 	// create 기능
 	public Company createCompany(String name
@@ -38,19 +38,31 @@ public class CompanyService {
 	public Company updateCompany(int id, String scale, int headcount) {
 		// nullPointerException 방지를 위해 Optional로 감싸줌
 		Optional<Company> optionalCompany = companyRepository.findById(id);
-		Company company = optionalCompany.orElse(null);
-		company = company.toBuilder().scale(scale).headcount(headcount).build();
-		Company result = companyRepository.save(company);
-		return result;
+		
+		if(optionalCompany.isPresent()) {
+			Company company = optionalCompany.get();
+			
+			company = company.toBuilder().scale(scale).headcount(headcount).build();
+			
+			Company result = companyRepository.save(company);
+			return result;
+		}
+		
+		return null;
+		
 	}
 	
 	// delete 기능
 	// id 를 기준으로 조회, 삭제
 	public void deleteCompany(int id) {
-		Optional<Company> OptionalCompany = companyRepository.findById(id);
-		Company company = OptionalCompany.orElse(null);
+		Optional<Company> optionalCompany = companyRepository.findById(id);
+//		if(optionalCompany.isPresent()) {
+//			Company company = optionalCompany.get();
+//			companyRepository.delete(company);
+//		}
 		
-		companyRepository.delete(company);
+		// 람다식 표현
+		optionalCompany.ifPresent(company -> companyRepository.delete(company));
 	}
 	
 }

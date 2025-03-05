@@ -17,7 +17,7 @@ import com.ryujm.spring.test.jpa.service.CompanyService;
 public class CompanyController {
 	
 	@Autowired
-	CompanyService companyService;
+	private CompanyService companyService;
 	
 	// create 기능
 	@ResponseBody
@@ -34,6 +34,7 @@ public class CompanyController {
 	}
 	
 	// update 기능
+	// id를 기준으로 추적하여 scale, headcount 컬럼값을 변경
 	@ResponseBody
 	@GetMapping("/update")
 	public Company updateCompany() {
