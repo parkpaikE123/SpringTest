@@ -1,7 +1,7 @@
 package com.ryujm.spring.test.jpa;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,15 +48,14 @@ public class RecruitController {
 		
 		// 7. Native query
 		
-		LocalDateTime date;
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		
 		String deadLine = "2026-04-10";
 		
-		deadLine.formatted(null)
+		LocalDate date = format.parse(deadLine);
 		
-		recruitList = recruitRepository.findByDeadline(date, "정규직", 8100);
+		System.out.println(deadLine);
 		
 		
 		return recruitList;
