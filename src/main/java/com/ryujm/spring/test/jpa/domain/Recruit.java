@@ -29,6 +29,7 @@ public class Recruit {
 	
 	@Column(name="companyId")
 	private int companyId;
+	
 	private String position;
 	private String responsibilities;
 	private String qualification;

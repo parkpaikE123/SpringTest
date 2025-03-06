@@ -1,5 +1,7 @@
 package com.ryujm.spring.test.jpa;
 
+import java.util.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
@@ -31,34 +33,26 @@ public class RecruitController {
 //		
 		
 		// 2. Parameter 조건 조회
-		
 //		recruitList = recruitRepository.findTop1ByCompanyIdOrderByIdDesc(1);
 		
 		// 3. 복합 조건 조회
 //		recruitList = recruitRepository.findByPositionAndType("웹 back-end 개발자", "정규직");
 		
 		// 4. 복합 조건 조회
-//		recruitList = recruitRepository.findByTypeContainingOrSalaryBetween("정규직", 8999, 99999);
+//		recruitList = recruitRepository.findByTypeContainingOrSalaryGreaterThanEqual("정규직", 9000);
 		
 		// 5. 정렬 제한 조건
 //		recruitList = recruitRepository.findTop3ByTypeOrderBySalaryDesc("계약직");
 		
 		// 6. 범위 조회
-		recruitList = recruitRepository.findByRegionAndSalaryBetween("성남시 분당구", 7000, 8500);
+//		recruitList = recruitRepository.findByRegionAndSalaryBetween("성남시 분당구", 7000, 8500);
 		
 		// 7. Native query
-		
-		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		
-		String deadLine = "2026-04-10";
-		
-		LocalDate date = format.parse(deadLine);
-		
-		System.out.println(deadLine);
-		
+//		마감일이 2026-04-10 이후이고 연봉이 8100 이상인 정규직 공고를 연봉 내림차순으로 조회하세요.
+		recruitList = recruitRepository.selectByNativeQuery(LocalDate.of(2026, 4, 10), 8100, "정규직");
 		
 		return recruitList;
 	}
+		
 	
 }
